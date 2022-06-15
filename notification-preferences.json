@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"            
+        },
+        "categories": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"            
+                    },
+                    "channels": {
+                        "type": "object",
+                        "properties": {
+                            "InApp": { "$ref": "#/$defs/channel" },
+                            "Email": { "$ref": "#/$defs/channel" }
+                        }
+                    }
+                },
+                "required": [
+                    "name",
+                    "channels"
+                ]
+            }
+        }
+    },
+    "required": [
+        "name",
+        "categories"
+    ],
+    "$defs": {
+        "channel": {
+            "type": "object",
+            "properties": {
+                "activeByDefault": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}
