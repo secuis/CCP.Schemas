@@ -1,38 +1,38 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
-  "type": "object",
-  "properties": {
-    "identifier": {
-      "type": "string"
-    },
-    "version": {
-      "type": "string",
-      "pattern": "^([0-9]+).([0-9]+).([0-9]+)$"
-    },
-    "date": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "required": {
-      "type": "boolean"
-    },
-    "description": {
-      "type": "string"
-    },
-    "defaultDisabledForCountries": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 2,
-        "maxLength": 2
-      }
-    }
-  },
-  "required": [
-    "identifier",
-    "version",
-    "date",
-    "required",
-    "description"
-  ]
+	"$schema": "http://json-schema.org/draft-04/schema",
+	"type": "object",
+	"properties": {
+		"identifier": {
+			"type": "string"
+		},
+		"version": {
+			"type": "string",
+			"pattern": "^([0-9]+).([0-9]+).([0-9]+)$"
+		},
+		"date": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"required": {
+			"type": "boolean"
+		},
+		"description": {
+			"type": "string"
+		},
+		"defaultDisabledForCountries": {
+			"type": "array",
+			"items": {
+				"type": "string",
+				"minLength": 2,
+				"maxLength": 2
+			}
+		}
+	},
+	"required": [
+		"identifier",
+		"version",
+		"date",
+		"required",
+		"description"
+	]
 }
