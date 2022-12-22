@@ -1,0 +1,17 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema",
+	"type": "object",
+	"properties": {
+		"version": {
+			"type": "string"
+		},
+		"date": {
+			"type": "string",
+			"format": "date-time"
+		}
+	},
+	"required": [
+		"version",
+		"date"
+	]
+}
