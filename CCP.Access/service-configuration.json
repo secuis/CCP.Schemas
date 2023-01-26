@@ -36,7 +36,7 @@
                     },
                     "accessStrategies": {
                         "type": "array",
-                        "description": "A set of access strategies needed to be fulfilled to be authorized for this service.\nWhen using AND or OR to evaulate strategies, the conditional operations should appear after the operands (Reverse Polish Notation)",
+                        "description": "A set of access strategies needed to be fulfilled to be authorized for this service.\r\nWhen using AND or OR to evaulate strategies, the conditional operations should appear after the operands (Reverse Polish Notation)",
                         "items": {
                             "type": "string",
                             "enum": [
@@ -66,23 +66,26 @@
                         "type": "array",
                         "description": "Specifications on how to fetch request data needed for access strategy evaluation",
                         "items": {
-                            "key": {
-                                "type": "string",
-                                "description": "Identifier used in strategy code to fetch the request value"
-                            },
-                            "fetchArgumentByMethod": {
-                                "type": "string",
-                                "description": "Source of the request value",
-                                "enum": [
-                                    "ConstantValue",
-                                    "UrlRegexp",
-                                    "JsonBody",
-                                    "AccessVerbFromReportDefinition"
-                                ]
-                            },
-                            "fetchArgumentByMethodValue": {
-                                "type": "string",
-                                "description": "Expression of how to fetch the request value. Format differs depending on 'fetchArgumentByMethod'"
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string",
+                                    "description": "Identifier used in strategy code to fetch the request value"
+                                },
+                                "fetchArgumentByMethod": {
+                                    "type": "string",
+                                    "description": "Source of the request value",
+                                    "enum": [
+                                        "ConstantValue",
+                                        "UrlRegexp",
+                                        "JsonBody",
+                                        "AccessVerbFromReportDefinition"
+                                    ]
+                                },
+                                "fetchArgumentByMethodValue": {
+                                    "type": "string",
+                                    "description": "Expression of how to fetch the request value. Format differs depending on 'fetchArgumentByMethod'"
+                                }
                             }
                         }
                     },
@@ -130,7 +133,7 @@
                             },
                             "retentionTimeInDays": {
                                 "type": "integer",
-                                "description": "Time until the audit entry will be automatically removed. These values applies as a rule of thumb:\n* Read operations generated automatically by the frontend without user required action, e.g. listing authorized locations (92 days)\n* Read operations requiring end user action, e.g. looking at a specific user profile (184 days)\n* Updating operations not related to security or accountability, e.g. updating one's own user profile (365 days)\n* Security related updating operations, e.g. assigning a role to someone (1826 days)"
+                                "description": "Time until the audit entry will be automatically removed. These values applies as a rule of thumb:\r\n* Read operations generated automatically by the frontend without user required action, e.g. listing authorized locations (92 days)\r\n* Read operations requiring end user action, e.g. looking at a specific user profile (184 days)\r\n* Updating operations not related to security or accountability, e.g. updating one's own user profile (365 days)\r\n* Security related updating operations, e.g. assigning a role to someone (1826 days)"
                             },
                             "regexUsedForAuditValuesInUrl": {
                                 "type": "string",
