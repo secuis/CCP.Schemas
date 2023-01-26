@@ -28,7 +28,7 @@
                     },
                     "serviceVerb": {
                         "type": "string",
-                        "description": "The service verb needed to be authorizated for this service"
+                        "description": "The service verb needed to be authorized for this service"
                     },
                     "userLocationVerb": {
                         "type": "string",
@@ -128,11 +128,11 @@
                                 "type": "string",
                                 "description": "Readable name of the endpoint. Should be unique for each 'groupName' to ease distinction"
                             },
-                            "retentionTimesInDays": {
+                            "retentionTimeInDays": {
                                 "type": "integer",
                                 "description": "Time until the audit entry will be automatically removed. These values applies as a rule of thumb:\n* Read operations generated automatically by the frontend without user required action, e.g. listing authorized locations (92 days)\n* Read operations requiring end user action, e.g. looking at a specific user profile (184 days)\n* Updating operations not related to security or accountability, e.g. updating one's own user profile (365 days)\n* Security related updating operations, e.g. assigning a role to someone (1826 days)"
                             },
-                            "regexUsedForauditValuesInUrl": {
+                            "regexUsedForAuditValuesInUrl": {
                                 "type": "string",
                                 "description": "Regular expression specifying what parts in the URL should be audit. All nameed group matches will be stored. .NET format is used, e.g. '(?<name>.+)'"
                             },
