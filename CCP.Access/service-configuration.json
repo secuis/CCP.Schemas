@@ -67,7 +67,8 @@
                                 "UserHasNoAuthRecord",
                                 "UserHasServiceVerb",
                                 "UserOwnsRiConnection",
-                                "UsersAuthAtAllLocations"
+                                "UsersAuthAtAllLocations",
+                                "UserCanAssignRoleAtLocation"
                             ]
                         }
                     },
