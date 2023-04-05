@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "nameTranslationKey": {
+      "type": "string"
+    },
+    "iconUrl": {
+      "type": "string"
+    },
+    "sortOrder": {
+      "type": "number"
+    },
+    "isPlatform": {
+      "type": "boolean"
+    },
+    "launchUrl": {
+      "type": "string"
+    },
+    "activationRoles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "availableInMobile": {
+      "type": "boolean"
+    },
+    "availableInWeb": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "nameTranslationKey",
+    "iconUrl",
+    "sortOrder",
+    "isPlatform",
+    "launchUrl",
+    "activationRoles",
+    "availableInMobile",
+    "availableInWeb"
+  ]
+}
