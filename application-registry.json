@@ -28,6 +28,12 @@
     },
     "availableInWeb": {
       "type": "boolean"
+    },
+    "limitedToCountries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     }
   },
   "required": [
