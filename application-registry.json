@@ -34,7 +34,6 @@
     }
   },
   "required": [
-    "nameTranslationKey",
     "iconUrl",
     "sortOrder",
     "isPlatform",
