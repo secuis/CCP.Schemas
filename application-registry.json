@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "type": "object",
   "properties": {
-    "iconUrl": {
+    "iconName": {
       "type": "string"
     },
     "sortOrder": {
@@ -11,7 +11,7 @@
     "isPlatform": {
       "type": "boolean"
     },
-    "launchUrl": {
+    "url": {
       "type": "string"
     },
     "activationRoles": {
@@ -20,13 +20,25 @@
         "type": "string"
       }
     },
-    "availableInMobile": {
+    "isAvailableInMobile": {
       "type": "boolean"
     },
-    "availableInWeb": {
+    "isAvailableInWeb": {
       "type": "boolean"
     },
-    "limitedToCountries": {
+    "enabledForCountries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "disabledForCountries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supportedLanguages": {
       "type": "array",
       "items": {
         "type": "string"
@@ -34,12 +46,14 @@
     }
   },
   "required": [
-    "iconUrl",
+    "iconName",
     "sortOrder",
     "isPlatform",
-    "launchUrl",
-    "activationRoles",
-    "availableInMobile",
-    "availableInWeb"
+    "url",
+    "isAvailableInMobile",
+    "isAvailableInWeb",
+    "enabledForCountries",
+    "disabledForCountries",
+    "supportedLanguages"
   ]
 }
