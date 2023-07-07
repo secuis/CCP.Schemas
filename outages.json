@@ -32,7 +32,7 @@
                     "message": {
                         "type": "string"
                     },
-                    "visibleOptions": {
+                    "displayOptions": {
                         "type": "array",
                         "items": {
                             "type": "string"
