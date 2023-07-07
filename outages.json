@@ -31,6 +31,13 @@
                     },
                     "message": {
                         "type": "string"
+                    },
+                    "visibleOptions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                            }
+                    }
                     }
                 }
             }
