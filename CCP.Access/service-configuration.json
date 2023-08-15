@@ -66,6 +66,7 @@
                                 "UserHasAssignableRoleAtLocation",
                                 "UserHasNoAuthRecord",
                                 "UserHasServiceVerb",
+                                "UserIsInFieldOfView",
                                 "UserOwnsRiConnection",
                                 "UsersAuthAtAllLocations",
                                 "UserCanAssignRoleAtLocation"
