@@ -26,6 +26,9 @@
     "isAvailableInWeb": {
       "type": "boolean"
     },
+    "isRootApp": {
+      "type": "boolean"
+    },
     "enabledForCountries": {
       "type": "array",
       "items": {
