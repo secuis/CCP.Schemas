@@ -21,6 +21,10 @@
 					"description": {
 						"type": "string"
 					},
+				        "type": {
+						"type": "string",
+						"enum": ["Cookie", "LegalTerms"]
+				        },
 					"defaultDisabledForCountries": {
 						"type": "array",
 						"items": {
