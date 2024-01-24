@@ -69,7 +69,8 @@
                                 "UserIsInFieldOfView",
                                 "UserOwnsRiConnection",
                                 "UsersAuthAtAllLocations",
-                                "UserCanAssignRoleAtLocation"
+                                "UserCanAssignRoleAtLocation",
+                                "QualifiedIntegrationUser"
                             ]
                         }
                     },
