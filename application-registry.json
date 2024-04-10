@@ -46,6 +46,12 @@
       "items": {
         "type": "string"
       }
+    },
+    "supportedCountries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     }
   },
   "required": [
@@ -57,6 +63,7 @@
     "isAvailableInWeb",
     "enabledForCountries",
     "disabledForCountries",
-    "supportedLanguages"
+    "supportedLanguages",
+    "supportedCountries"
   ]
 }
