@@ -91,7 +91,9 @@
                                         "ConstantValue",
                                         "UrlRegexp",
                                         "JsonBody",
-                                        "AccessVerbFromReportDefinition"
+                                        "AccessVerbFromReportDefinition",
+                                        "PathParam",
+                                        "QueryParam"
                                     ]
                                 },
                                 "fetchArgumentByMethodValue": {
