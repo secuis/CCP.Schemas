@@ -125,7 +125,8 @@
                                 "type": "string",
                                 "description": "The method used to make an authorized call to the service",
                                 "enum": [
-                                    "AzureFunction"
+                                    "AzureFunction",
+                                    "ApiKeyHeader"
                                 ]
                             },
                             "fromConfigurationKey": {
