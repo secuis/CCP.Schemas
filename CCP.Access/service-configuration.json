@@ -80,7 +80,8 @@
                                         "DocumentManagementAccess",
                                         "QualifiedIntegrationUser",
                                         "AuthBothLocations",
-                                        "NoUsersAssignedAtLocation"
+                                        "NoUsersAssignedAtLocation",
+                                        "IsAuthorizedToDeleteUser"
                                     ]
                                 },
                                 {
