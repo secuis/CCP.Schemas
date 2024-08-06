@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "applicationName": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string",
+      "format": "hostname"
+    },
+    "urls": {
+      "type": "object",
+      "properties": {
+        "cookiePolicy": {
+          "type": "object",
+          "properties": {
+            "en": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["en"]
+        },
+        "legalDocuments": {
+          "type": "object",
+          "properties": {
+            "en": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["en"]
+        },
+        "privacyNotice": {
+          "type": "object",
+          "properties": {
+            "de": {
+              "type": "string",
+              "format": "uri"
+            },
+            "en": {
+              "type": "string",
+              "format": "uri"
+            },
+            "fr": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": ["en"]
+        }
+      },
+      "required": ["cookiePolicy", "legalDocuments", "privacyNotice"]
+    },
+    "emails": {
+      "type": "object",
+      "properties": {
+        "senderAddress": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": ["senderAddress"]
+    }
+  },
+  "required": ["identifier", "name", "applicationName", "domain", "urls", "emails"]
+}
