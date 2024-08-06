@@ -48,31 +48,39 @@
                         "description": "A set of access strategies needed to be fulfilled to be authorized for this service.\nWhen using AND or OR to evaulate strategies, the conditional operations should appear after the operands (Reverse Polish Notation)",
                         "items": {
                             "type": "string",
-                            "enum": [
-                                "OR",
-                                "AND",
-                                "AllowUserIdSameInBothTokenAndUrl",
-                                "AuthAllCustomerObjectNumbers",
-                                "AuthAllLocations",
-                                "Block",
-                                "BlockIfAuthorizationBelongsToUser",
-                                "EmailBelongsToTokenUserId",
-                                "LocationHasLabel",
-                                "OpenEndpoint",
-                                "RiConnectionAuthAllSites",
-                                "RiConnectionHasAtLeastSameAuthAsContact",
-                                "RiConnectionMayModifyContactOnSites",
-                                "RiConnectionMaySetAuthOnSites",
-                                "UserHasAssignableRoleAtLocation",
-                                "UserHasNoAuthRecord",
-                                "UserHasServiceVerb",
-                                "UserIsInFieldOfView",
-                                "UserOwnsRiConnection",
-                                "UsersAuthAtAllLocations",
-                                "UserCanAssignRoleAtLocation",
-                                "DocumentManagementAccess",
-                                "QualifiedIntegrationUser",
-                                "AuthBothLocations"
+                            "anyOf":[
+                                {
+                                    "enum": [
+                                        "OR",
+                                        "AND",
+                                        "AllowUserIdSameInBothTokenAndUrl",
+                                        "AuthAllCustomerObjectNumbers",
+                                        "AuthAllLocations",
+                                        "Block",
+                                        "BlockIfAuthorizationBelongsToUser",
+                                        "EmailBelongsToTokenUserId",
+                                        "LocationHasLabel",
+                                        "OpenEndpoint",
+                                        "RiConnectionAuthAllSites",
+                                        "RiConnectionHasAtLeastSameAuthAsContact",
+                                        "RiConnectionMayModifyContactOnSites",
+                                        "RiConnectionMaySetAuthOnSites",
+                                        "UserHasAssignableRoleAtLocation",
+                                        "UserHasNoAuthRecord",
+                                        "UserHasServiceVerb",
+                                        "UserIsInFieldOfView",
+                                        "UserOwnsRiConnection",
+                                        "UsersAuthAtAllLocations",
+                                        "UserCanAssignRoleAtLocation",
+                                        "DocumentManagementAccess",
+                                        "QualifiedIntegrationUser",
+                                        "AuthBothLocations"
+                                    ]
+                                },
+                                {
+                                    //Allows for instances when calling this strategy
+                                    "pattern": "^AuthAllLocations\\([^)]+\\)$"
+                                }
                             ]
                         }
                     },
