@@ -74,7 +74,8 @@
                                         "UserCanAssignRoleAtLocation",
                                         "DocumentManagementAccess",
                                         "QualifiedIntegrationUser",
-                                        "AuthBothLocations"
+                                        "AuthBothLocations",
+                                        "NoUsersAssignedAtLocation"
                                     ]
                                 },
                                 {
