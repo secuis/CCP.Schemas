@@ -115,8 +115,7 @@
                     },
                     "baseUrl": {
                         "type": "string",
-                        "description": "Base URL of the service that will called for the service",
-                        "format":"uri"
+                        "description": "Base URL of the service that will called for the service"
                     },
                     "authorization": {
                         "type": "object",
