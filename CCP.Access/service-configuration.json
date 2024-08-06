@@ -84,8 +84,8 @@
                                     ]
                                 },
                                 {
-                                    //Allows for instances when calling this strategy
-                                    "pattern": "^AuthAllLocations\\([^)]+\\)$"
+                                    //Allows for instances when calling these strategies
+                                    "pattern": "^(AuthAllLocations|UsersAuthAtAllLocations)\\([^)]+\\)$"
                                 }
                             ]
                         }
