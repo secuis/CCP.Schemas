@@ -70,7 +70,8 @@
                                 "UserOwnsRiConnection",
                                 "UsersAuthAtAllLocations",
                                 "UserCanAssignRoleAtLocation",
-                                "DocumentManagementAccess"
+                                "DocumentManagementAccess",
+                                "QualifiedIntegrationUser"
                             ]
                         }
                     },
