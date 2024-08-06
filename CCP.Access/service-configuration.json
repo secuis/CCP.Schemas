@@ -23,7 +23,12 @@
                             "post",
                             "put",
                             "delete",
-                            "patch"
+                            "patch",
+                            "GET",
+                            "POST",
+                            "PUT",
+                            "DELETE",
+                            "PATCH"
                         ]
                     },
                     "serviceVerb": {
