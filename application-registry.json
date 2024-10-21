@@ -55,6 +55,32 @@
     },
     "isHomeApp": {
       "type": "boolean"
+    },
+    "allServices": {
+      "type": "object",
+      "properties": {
+        "isEnabled": {
+          "type": "boolean"
+        },
+        "serviceRequestEmails":{
+          "type": "object",
+          "properties": {
+            "default": {
+              "type": "string"
+            },
+            "perCountry":{ 
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }      
+            }
+          
+          }
+        }
+      },
+      "required": [
+        "isEnabled"
+      ]
     }
   },
   "required": [
@@ -67,6 +93,7 @@
     "enabledForCountries",
     "disabledForCountries",
     "supportedLanguages",
-    "supportedCountries"
+    "supportedCountries",
+    "allServices"
   ]
 }
