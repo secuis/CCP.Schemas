@@ -59,7 +59,7 @@
     "allServices": {
       "type": "object",
       "properties": {
-        "isEnabled": {
+        "enabled": {
           "type": "boolean"
         },
         "serviceRequestEmails":{
@@ -79,7 +79,7 @@
         }
       },
       "required": [
-        "isEnabled"
+        "enabled"
       ]
     }
   },
