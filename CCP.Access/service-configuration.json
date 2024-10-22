@@ -71,7 +71,6 @@
                                         "RiConnectionMayModifyContactOnSites",
                                         "RiConnectionMaySetAuthOnSites",
                                         "UserHasAssignableRoleAtLocation",
-                                        "UserHasNoAuthRecord",
                                         "UserHasServiceVerb",
                                         "UserIsInFieldOfView",
                                         "UserOwnsRiConnection",
@@ -182,16 +181,16 @@
                             },
                             "retentionTimeInDays": {
                                 "type": "integer",
-                                "description": "Time until the audit entry will be automatically removed. These values applies as a rule of thumb:\n* Read operations generated automatically by the frontend without user required action, e.g. listing authorized locations (92 days)\n* Read operations requiring end user action, e.g. looking at a specific user profile (184 days)\n* Updating operations not related to security or accountability, e.g. updating one's own user profile (365 days)\n* Security related updating operations, e.g. assigning a role to someone (1826 days)",
+                                "description": "Time until the audit entry will be automatically removed. These values apply as a rule of thumb:\n* Read operations generated automatically by the frontend without user-required action, e.g. listing authorized locations (92 days)\n* Read operations requiring end-user action, e.g. looking at a specific user profile (184 days)\n* Updating operations not related to security or accountability, e.g. updating one's user profile (365 days)\n* Security related updating operations, e.g. assigning a role to someone (1826 days)",
                                 "default": 365
                             },
                             "regexUsedForAuditValuesInUrl": {
                                 "type": "string",
-                                "description": "Regular expression specifying what parts in the URL should be audit. All nameed group matches will be stored. .NET format is used, e.g. '(?< name>.+)'"
+                                "description": "Regular expression specifying what parts in the URL should be audited. All named group matches will be stored. .NET format is used, e.g. '(?< name>.+)'"
                             },
                             "auditBodyProperties": {
                                 "type": "string",
-                                "description": "Semi-colon separated list of properties in the request body that will be audit"
+                                "description": "Semi-colon separated list of properties in the request body that will be audited"
                             }
                         },
                         "required": [
