@@ -80,6 +80,36 @@
       "required": ["enabled"]
     }
   },
+  "appSwitcher": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "sortOrder": {
+        "type": "number"
+      },
+      "isPlatform": {
+        "type": "boolean"
+      },
+      "isHomeApp": {
+        "type": "boolean"
+      }
+    },
+    "required": ["enabled", "sortOrder"]
+  },
+  "userMenu": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "sortOrder": {
+        "type": "number"
+      }
+    },
+    "required": ["enabled", "sortOrder"]
+  },
   "required": [
     "iconName",
     "sortOrder",
@@ -91,6 +121,7 @@
     "disabledForCountries",
     "supportedLanguages",
     "supportedCountries",
-    "allServices"
+    "allServices",
+    "appSwitcher"
   ]
 }
