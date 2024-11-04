@@ -62,25 +62,22 @@
         "enabled": {
           "type": "boolean"
         },
-        "serviceRequestEmails":{
+        "serviceRequestEmails": {
           "type": "object",
           "properties": {
             "default": {
               "type": "string"
             },
-            "perCountry":{ 
+            "perCountry": {
               "type": "object",
               "additionalProperties": {
                 "type": "string"
-              }      
+              }
             }
-          
           }
         }
       },
-      "required": [
-        "enabled"
-      ]
+      "required": ["enabled"]
     }
   },
   "required": [
