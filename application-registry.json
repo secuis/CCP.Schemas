@@ -62,26 +62,53 @@
         "enabled": {
           "type": "boolean"
         },
-        "serviceRequestEmails":{
+        "serviceRequestEmails": {
           "type": "object",
           "properties": {
             "default": {
               "type": "string"
             },
-            "perCountry":{ 
+            "perCountry": {
               "type": "object",
               "additionalProperties": {
                 "type": "string"
-              }      
+              }
             }
-          
           }
         }
       },
-      "required": [
-        "enabled"
-      ]
+      "required": ["enabled"]
     }
+  },
+  "appSwitcher": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "sortOrder": {
+        "type": "number"
+      },
+      "isPlatform": {
+        "type": "boolean"
+      },
+      "isHomeApp": {
+        "type": "boolean"
+      }
+    },
+    "required": ["enabled", "sortOrder"]
+  },
+  "userMenu": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "sortOrder": {
+        "type": "number"
+      }
+    },
+    "required": ["enabled", "sortOrder"]
   },
   "required": [
     "iconName",
@@ -94,6 +121,7 @@
     "disabledForCountries",
     "supportedLanguages",
     "supportedCountries",
-    "allServices"
+    "allServices",
+    "appSwitcher"
   ]
 }
