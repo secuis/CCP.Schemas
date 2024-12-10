@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "roleName": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "verbs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "serviceVerbs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "isInternal": {
+      "type": "boolean"
+    },
+    "isDeleted": {
+      "type": "boolean"
+    },
+    "allowedDomains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "allowedLocationLabels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "roleName",
+    "displayName",
+    "isInternal",
+    "isDeleted",
+    "allowedDomains",
+    "allowedLocationLabels",
+    "verbs",
+    "serviceVerbs"
+  ]
+}
