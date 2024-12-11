@@ -2,12 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "type": "object",
   "properties": {
-    "roleName": {
-      "type": "string"
-    },
-    "displayName": {
-      "type": "string"
-    },
     "verbs": {
       "type": "array",
       "items": {
@@ -21,9 +15,6 @@
       }
     },
     "isInternal": {
-      "type": "boolean"
-    },
-    "isDeleted": {
       "type": "boolean"
     },
     "allowedDomains": {
@@ -40,11 +31,7 @@
     }
   },
   "required": [
-    "id",
-    "roleName",
-    "displayName",
     "isInternal",
-    "isDeleted",
     "allowedDomains",
     "allowedLocationLabels",
     "verbs",
