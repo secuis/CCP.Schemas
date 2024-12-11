@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "verbs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "serviceVerbs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "isInternal": {
+      "type": "boolean"
+    },
+    "allowedDomains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "allowedLocationLabels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "isInternal",
+    "allowedDomains",
+    "allowedLocationLabels",
+    "verbs",
+    "serviceVerbs"
+  ]
+}
