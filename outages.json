@@ -37,6 +37,12 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 }
             }
