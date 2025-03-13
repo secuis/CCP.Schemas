@@ -80,7 +80,8 @@
                                         "QualifiedIntegrationUser",
                                         "AuthBothLocations",
                                         "NoUsersAssignedAtLocation",
-                                        "IsAuthorizedToDeleteUser"
+                                        "IsAuthorizedToDeleteUser",
+                                        "AllowWithDescendantAccess"
                                     ]
                                 },
                                 {
