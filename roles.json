@@ -44,6 +44,11 @@
         "uiSchema": {
           "type": "object"
         }
+      },
+      "dependencies": {
+        "version": ["jsonSchema", "uiSchema"],
+        "jsonSchema": ["version", "uiSchema"],
+        "uiSchema": ["version", "jsonSchema"]
       }
     }
   },
