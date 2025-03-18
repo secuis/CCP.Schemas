@@ -28,6 +28,23 @@
       "items": {
         "type": "string"
       }
+    },
+    "isAdmin": {
+      "type": "boolean"
+    },
+    "customFilter": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "jsonSchema": {
+          "type": "object"
+        },
+        "uiSchema": {
+          "type": "object"
+        }
+      }
     }
   },
   "required": [
