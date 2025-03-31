@@ -110,6 +110,9 @@
     },
     "required": ["enabled", "sortOrder"]
   },
+  "customConfiguration": {
+    "type": "object"
+  },
   "required": [
     "iconName",
     "sortOrder",
