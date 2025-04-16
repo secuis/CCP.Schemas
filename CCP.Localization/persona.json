@@ -11,6 +11,6 @@
       "type": "string"
     }
   },
-  "required": [ "model" ],
+  "required": [ "model", "prompt" ],
   "additionalProperties": false
 }
