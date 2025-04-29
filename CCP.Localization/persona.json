@@ -9,6 +9,49 @@
     },
     "prompt": {
       "type": "string"
+    },
+    "languageData": {
+      "type": "object",
+      "properties": {
+        "glossary": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z]{2}$": {
+              "type": "object",
+              "patternProperties": {
+                "^.+$": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[a-z]{2}$": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "abbreviations": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z]{2}$": {
+              "type": "object",
+              "patternProperties": {
+                "^.+$": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [ "glossary", "abbreviations" ],
+      "additionalProperties": false
     }
   },
   "required": [ "model", "prompt" ]
