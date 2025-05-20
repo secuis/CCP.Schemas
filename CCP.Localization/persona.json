@@ -5,7 +5,7 @@
   "properties": {
     "model": {
       "type": "string",
-      "enum": [ "GPT-4o-mini" ]
+      "enum": [ "GPT-4.1-mini" ]
     },
     "prompt": {
       "type": "string"
