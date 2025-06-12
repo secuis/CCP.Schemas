@@ -5,9 +5,6 @@
     "iconName": {
       "type": "string"
     },
-    "sortOrder": {
-      "type": "number"
-    },
     "isPlatform": {
       "type": "boolean"
     },
@@ -115,7 +112,6 @@
   },
   "required": [
     "iconName",
-    "sortOrder",
     "isPlatform",
     "url",
     "isAvailableInMobile",
