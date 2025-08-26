@@ -1,0 +1,315 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ServiceConfigurationV2",
+  "description": "Service Configuration Schema for V2",
+  "type": "object",
+  "required": [
+    "version",
+    "serviceName",
+    "destination",
+    "endpoints"
+  ],
+  "properties": {
+    "version": {
+      "const": "v2",
+      "description": "Configuration version identifier"
+    },
+    "serviceName": {
+      "type": "string",
+      "description": "Name of the service"
+    },
+    "cache": {
+      "type": [ "object", "null" ],
+      "description": "Global cache settings",
+      "$ref": "#/definitions/CacheSettings"
+    },
+    "rateLimit": {
+      "type": [ "object", "null" ],
+      "description": "Global rate limit settings",
+      "$ref": "#/definitions/RateLimitSettings"
+    },
+    "destination": {
+      "type": "object",
+      "description": "Default destination settings for the service",
+      "$ref": "#/definitions/DestinationSettings"
+    },
+    "endpoints": {
+      "type": "array",
+      "description": "List of endpoint configurations",
+      "items": {
+        "$ref": "#/definitions/EndpointConfiguration"
+      },
+      "default": []
+    }
+  },
+  "definitions": {
+    "DestinationSettings": {
+      "type": "object",
+      "required": [
+        "route",
+        "authorization"
+      ],
+      "properties": {
+        "route": {
+          "type": "string",
+          "description": "Route to the destination service"
+        },
+        "authorization": {
+          "$ref": "#/definitions/DestinationAuthorization",
+          "description": "Authorization settings for the destination"
+        }
+      }
+    },
+    "DestinationAuthorization": {
+      "type": "object",
+      "required": [
+        "fromConfigurationKey"
+      ],
+      "properties": {
+        "authorizationMethod": {
+          "type": "string",
+          "enum": [
+            "ApiKey",
+            "AzureFunction"
+          ],
+          "default": "AzureFunction",
+          "description": "Method used for authorization"
+        },
+        "fromConfigurationKey": {
+          "type": "string",
+          "description": "Configuration key for authorization details"
+        }
+      }
+    },
+    "AuditSettings": {
+      "type": "object",
+      "properties": {
+        "retentionTimeInDays": {
+          "type": "integer",
+          "default": 365,
+          "description": "Number of days to retain audit data"
+        },
+        "auditValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParameterExtraction"
+          },
+          "default": [],
+          "description": "Values to extract for auditing"
+        }
+      }
+    },
+    "EndpointConfiguration": {
+      "type": "object",
+      "required": [
+        "name",
+        "match",
+        "accessControl"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Endpoint name"
+        },
+        "match": {
+          "$ref": "#/definitions/EndpointMatch",
+          "description": "Endpoint matching criteria"
+        },
+        "blockAdminBypass": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to block admin bypass for this endpoint"
+        },
+        "accessControl": {
+          "$ref": "#/definitions/AccessControlSettings",
+          "description": "Access control settings for the endpoint"
+        },
+        "cache": {
+          "type": [ "object", "null" ],
+          "$ref": "#/definitions/CacheSettings",
+          "description": "Endpoint-specific cache settings (overrides global settings)"
+        },
+        "rateLimit": {
+          "type": [ "object", "null" ],
+          "$ref": "#/definitions/RateLimitSettings",
+          "description": "Endpoint-specific rate limit settings (overrides global settings)"
+        },
+        "audit": {
+          "type": [ "object", "null" ],
+          "$ref": "#/definitions/AuditSettings",
+          "description": "Audit settings for the endpoint"
+        },
+        "destination": {
+          "type": [ "object", "null" ],
+          "$ref": "#/definitions/DestinationSettings",
+          "description": "Endpoint-specific destination (overrides global settings)"
+        }
+      }
+    },
+    "EndpointMatch": {
+      "type": "object",
+      "required": [
+        "path",
+        "methods"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "URL path pattern to match"
+        },
+        "methods": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "HTTP methods to match (e.g., GET, POST, PUT, DELETE)"
+        },
+        "versioning": {
+          "type": [ "object", "null" ],
+          "$ref": "#/definitions/ApiVersioning",
+          "description": "API versioning settings"
+        }
+      }
+    },
+    "ApiVersioning": {
+      "type": "object",
+      "required": [
+        "introducedIn"
+      ],
+      "properties": {
+        "introducedIn": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1,
+          "description": "API version when this endpoint was introduced"
+        },
+        "removedIn": {
+          "type": [ "integer", "null" ],
+          "description": "API version when this endpoint was or will be removed"
+        }
+      }
+    },
+    "AccessControlSettings": {
+      "type": "object",
+      "properties": {
+        "strategies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Access control strategy names"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParameterExtraction"
+          },
+          "default": [],
+          "description": "Parameters for access control strategies"
+        },
+        "minimumAuthenticationLevel": {
+          "type": "string",
+          "enum": [
+            "None",
+            "SingleFactor",
+            "MultiFactor"
+          ],
+          "default": "SingleFactor",
+          "description": "Minimum authentication level required"
+        },
+        "enableCustomFilter": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to enable custom filtering"
+        }
+      }
+    },
+    "CacheSettings": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether caching is enabled"
+        },
+        "hours": {
+          "type": "integer",
+          "default": 1,
+          "description": "Cache duration in hours"
+        }
+      }
+    },
+    "RateLimitSettings": {
+      "type": "object",
+      "required": [
+        "strategies",
+        "parameters"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether rate limiting is enabled"
+        },
+        "strategies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Rate limiting strategy names"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Sliding",
+            "Fixed",
+            "TokenBucket"
+          ],
+          "description": "Type of rate limiting"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Parameters for rate limiting"
+        }
+      }
+    },
+    "ParameterExtraction": {
+      "type": "object",
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Parameter name"
+        },
+        "extractionMethod": {
+          "type": "string",
+          "enum": [
+            "PathParam",
+            "ConstantValue",
+            "JsonBody",
+            "UrlRegexp",
+            "RequestHeader",
+            "AccessVerbFromReportDefinition",
+            "QueryParam"
+          ],
+          "description": "Method to extract parameter value"
+        },
+        "value": {
+          "type": "string",
+          "description": "Parameter value or extraction pattern"
+        },
+        "instance": {
+          "type": [ "string", "null" ],
+          "description": "Optional instance identifier"
+        }
+      }
+    }
+  }
+}
