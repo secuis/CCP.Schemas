@@ -81,7 +81,8 @@
                                         "AuthBothLocations",
                                         "NoUsersAssignedAtLocation",
                                         "IsAuthorizedToDeleteUser",
-                                        "AllowWithDescendantAccess"
+                                        "AllowWithDescendantAccess",
+                                        "UserCanAssignRolesAtLocations"
                                     ]
                                 },
                                 {
