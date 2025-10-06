@@ -90,7 +90,6 @@
     "enabledForCountries",
     "disabledForCountries",
     "supportedLanguages",
-    "supportedCountries",
     "appSwitcher"
   ]
 }
