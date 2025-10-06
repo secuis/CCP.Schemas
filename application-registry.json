@@ -52,29 +52,6 @@
     },
     "isHomeApp": {
       "type": "boolean"
-    },
-    "allServices": {
-      "type": "object",
-      "properties": {
-        "enabled": {
-          "type": "boolean"
-        },
-        "serviceRequestEmails": {
-          "type": "object",
-          "properties": {
-            "default": {
-              "type": "string"
-            },
-            "perCountry": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      },
-      "required": ["enabled"]
     }
   },
   "appSwitcher": {
@@ -120,7 +97,6 @@
     "disabledForCountries",
     "supportedLanguages",
     "supportedCountries",
-    "allServices",
     "appSwitcher"
   ]
 }
