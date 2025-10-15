@@ -28,6 +28,11 @@
       "description": "Global rate limit settings",
       "$ref": "#/definitions/RateLimitSettings"
     },
+    "streaming": {
+      "type": [ "object", "null" ],
+      "description": "Global streaming settings",
+      "$ref": "#/definitions/StreamingSettings"
+    },
     "destination": {
       "type": "object",
       "description": "Default destination settings for the service",
@@ -133,6 +138,11 @@
           "type": [ "object", "null" ],
           "$ref": "#/definitions/RateLimitSettings",
           "description": "Endpoint-specific rate limit settings (overrides global settings)"
+        },
+        "streaming": {
+          "type": [ "object", "null" ],
+          "$ref": "#/definitions/StreamingSettings",
+          "description": "Endpoint-specific streaming settings (overrides global settings)"
         },
         "audit": {
           "type": [ "object", "null" ],
@@ -308,6 +318,16 @@
         "instance": {
           "type": [ "string", "null" ],
           "description": "Optional instance identifier"
+        }
+      }
+    },
+    "StreamingSettings": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether streaming is enabled"
         }
       }
     }
