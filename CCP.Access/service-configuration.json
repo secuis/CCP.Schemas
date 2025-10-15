@@ -1,220 +1,220 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema",
-    "type": "object",
-    "properties": {
-        "services": {
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "type": "object",
+  "properties": {
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "regexPattern": {
+            "type": "string",
+            "description": "Regular expression for matching a service call route. Should be as specific as possible."
+          },
+          "urlRoute": {
+            "type": "string",
+            "description": "An example path that must match the regexPattern. Should include example query params if applicable to ensure testing of the regex pattern catches any errors."
+          },
+          "method": {
+            "type": "string",
+            "description": "HTTP method used for matching this service configuration",
+            "enum": [
+              "get",
+              "post",
+              "put",
+              "delete",
+              "patch",
+              "GET",
+              "POST",
+              "PUT",
+              "DELETE",
+              "PATCH"
+            ]
+          },
+          "serviceVerb": {
+            "type": "string",
+            "description": "The service verb needed to be authorized for this service"
+          },
+          "userLocationVerb": {
+            "type": "string",
+            "description": "The verb needed at the locations in the request to be authorized for this service"
+          },
+          "minimumAuthenticationLevel": {
+            "type": "string",
+            "description": "Minimum authentication level needed to call service. Authentication level is specified in session token.\n* None: No authentication needed, i.e. anonymous access is allowed\n* SingleFactor: At least single-factor authentication required\n* MultiFactor: Multi-factor authentication required",
+            "enum": [
+              "None",
+              "SingleFactor",
+              "MultiFactor"
+            ]
+          },
+          "accessStrategies": {
             "type": "array",
+            "description": "A set of access strategies needed to be fulfilled to be authorized for this service.\nWhen using AND or OR to evaulate strategies, the conditional operations should appear after the operands (Reverse Polish Notation)",
             "items": {
-                "type": "object",
+              "type": "string",
+              "anyOf": [
+                {
+                  "enum": [
+                    "OR",
+                    "AND",
+                    "AllowUserIdSameInBothTokenAndUrl",
+                    "AuthAllCustomerObjectNumbers",
+                    "AuthAllLocations",
+                    "Block",
+                    "BlockIfAuthorizationBelongsToUser",
+                    "EmailBelongsToTokenUserId",
+                    "LocationHasLabel",
+                    "OpenEndpoint",
+                    "RiConnectionAuthAllSites",
+                    "RiConnectionHasAtLeastSameAuthAsContact",
+                    "RiConnectionMayModifyContactOnSites",
+                    "RiConnectionMaySetAuthOnSites",
+                    "UserHasAssignableRoleAtLocation",
+                    "UserHasServiceVerb",
+                    "UserIsInFieldOfView",
+                    "UserOwnsRiConnection",
+                    "UsersAuthAtAllLocations",
+                    "UserCanAssignRoleAtLocation",
+                    "DocumentManagementAccess",
+                    "QualifiedIntegrationUser",
+                    "AuthBothLocations",
+                    "NoUsersAssignedAtLocation",
+                    "IsAuthorizedToDeleteUser",
+                    "AllowWithDescendantAccess",
+                    "UserCanAssignRolesAtLocations"
+                  ]
+                },
+                {
+                  //Allows for instances when calling these strategies
+                  "pattern": "^(AuthAllLocations|UsersAuthAtAllLocations)\\([^)]+\\)$"
+                }
+              ]
+            }
+          },
+          "accessStrategiesRequestValues": {
+            "type": "array",
+            "description": "Specifications on how to fetch request data needed for access strategy evaluation",
+            "items": {
+              "type": "object",
               "properties": {
-                "regexPattern": {
+                "key": {
                   "type": "string",
-                  "description": "Regular expression for matching a service call route. Should be as specific as possible."
+                  "description": "Identifier used in strategy code to fetch the request value"
                 },
-                "urlRoute": {
+                "fetchArgumentByMethod": {
                   "type": "string",
-                  "description": "An example path that must match the regexPattern. Should include example query params if applicable to ensure testing of the regex pattern catches any errors."
-                },
-                "method": {
-                  "type": "string",
-                  "description": "HTTP method used for matching this service configuration",
+                  "description": "Source of the request value",
                   "enum": [
-                    "get",
-                    "post",
-                    "put",
-                    "delete",
-                    "patch",
-                    "GET",
-                    "POST",
-                    "PUT",
-                    "DELETE",
-                    "PATCH"
+                    "ConstantValue",
+                    "UrlRegexp",
+                    "JsonBody",
+                    "AccessVerbFromReportDefinition",
+                    "PathParam",
+                    "QueryParam",
+                    "RequestHeader"
                   ]
                 },
-                "serviceVerb": {
+                "fetchArgumentByMethodValue": {
                   "type": "string",
-                  "description": "The service verb needed to be authorized for this service"
+                  "description": "Expression of how to fetch the request value. Format differs depending on 'fetchArgumentByMethod'"
                 },
-                "userLocationVerb": {
+                "instance": {
                   "type": "string",
-                  "description": "The verb needed at the locations in the request to be authorized for this service"
-                },
-                "minimumAuthenticationLevel": {
-                  "type": "string",
-                  "description": "Minimum authentication level needed to call service. Authentication level is specified in session token.\n* None: No authentication needed, i.e. anonymous access is allowed\n* SingleFactor: At least single-factor authentication required\n* MultiFactor: Multi-factor authentication required",
-                  "enum": [
-                    "None",
-                    "SingleFactor",
-                    "MultiFactor"
-                  ]
-                },
-                "accessStrategies": {
-                  "type": "array",
-                  "description": "A set of access strategies needed to be fulfilled to be authorized for this service.\nWhen using AND or OR to evaulate strategies, the conditional operations should appear after the operands (Reverse Polish Notation)",
-                  "items": {
-                    "type": "string",
-                    "anyOf": [
-                      {
-                        "enum": [
-                          "OR",
-                          "AND",
-                          "AllowUserIdSameInBothTokenAndUrl",
-                          "AuthAllCustomerObjectNumbers",
-                          "AuthAllLocations",
-                          "Block",
-                          "BlockIfAuthorizationBelongsToUser",
-                          "EmailBelongsToTokenUserId",
-                          "LocationHasLabel",
-                          "OpenEndpoint",
-                          "RiConnectionAuthAllSites",
-                          "RiConnectionHasAtLeastSameAuthAsContact",
-                          "RiConnectionMayModifyContactOnSites",
-                          "RiConnectionMaySetAuthOnSites",
-                          "UserHasAssignableRoleAtLocation",
-                          "UserHasServiceVerb",
-                          "UserIsInFieldOfView",
-                          "UserOwnsRiConnection",
-                          "UsersAuthAtAllLocations",
-                          "UserCanAssignRoleAtLocation",
-                          "DocumentManagementAccess",
-                          "QualifiedIntegrationUser",
-                          "AuthBothLocations",
-                          "NoUsersAssignedAtLocation",
-                          "IsAuthorizedToDeleteUser",
-                          "AllowWithDescendantAccess",
-                          "UserCanAssignRolesAtLocations"
-                        ]
-                      },
-                      {
-                        //Allows for instances when calling these strategies
-                        "pattern": "^(AuthAllLocations|UsersAuthAtAllLocations)\\([^)]+\\)$"
-                      }
-                    ]
-                  }
-                },
-                "accessStrategiesRequestValues": {
-                  "type": "array",
-                  "description": "Specifications on how to fetch request data needed for access strategy evaluation",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "key": {
-                        "type": "string",
-                        "description": "Identifier used in strategy code to fetch the request value"
-                      },
-                      "fetchArgumentByMethod": {
-                        "type": "string",
-                        "description": "Source of the request value",
-                        "enum": [
-                          "ConstantValue",
-                          "UrlRegexp",
-                          "JsonBody",
-                          "AccessVerbFromReportDefinition",
-                          "PathParam",
-                          "QueryParam",
-                          "RequestHeader"
-                        ]
-                      },
-                      "fetchArgumentByMethodValue": {
-                        "type": "string",
-                        "description": "Expression of how to fetch the request value. Format differs depending on 'fetchArgumentByMethod'"
-                      },
-                      "instance": {
-                        "type": "string",
-                        "description": "Allows directing the value to only a specific access strategy instance. E.g. if 'accessStrategies' is [\"AuthAllLocations\", \"AuthAllLocations(A)\", \"OR\"], and 'instance' is \"A\", only the second instance of AuthAllLocations can access the request value"
-                      }
-                    },
-                    "required": [
-                      "key",
-                      "fetchArgumentByMethod",
-                      "fetchArgumentByMethodValue"
-                    ]
-                  }
-                },
-                "baseUrl": {
-                  "type": "string",
-                  "description": "Base URL of the service that will called for the service"
-                },
-                "authorization": {
-                  "type": "object",
-                  "description": "Section describing how Access API will authorize the call to the service",
-                  "properties": {
-                    "authorizationMethod": {
-                      "type": "string",
-                      "description": "The method used to make an authorized call to the service",
-                      "enum": [
-                        "AzureFunction",
-                        "ApiKeyHeader"
-                      ]
-                    },
-                    "fromConfigurationKey": {
-                      "type": "string",
-                      "description": "Only applicable when 'authorizationMethod' is 'AzureFunction'. Key of configuration value where the function key resides"
-                    }
-                  },
-                  "required": [
-                    "authorizationMethod",
-                    "fromConfigurationKey"
-                  ]
-                },
-                "shouldCache": {
-                  "type": "boolean",
-                  "description": "Set to true if Access API should cache the response, otherwise set to false"
-                },
-                "shouldStream": {
-                  "type": "boolean",
-                  "description": "Set to true if Access API should stream the response, otherwise set to false"
-                },
-                "cacheHours": {
-                  "type": "integer",
-                  "description": "Number of hours the value should be cached if caching is enabled"
-                },
-                "auditConfiguration": {
-                  "type": "object",
-                  "description": "Section describing auditing options",
-                  "properties": {
-                    "auditingEnabled": {
-                      "type": "boolean",
-                      "description": "Set to true to enable auditing, otherwise set to false"
-                    },
-                    "groupName": {
-                      "type": "string",
-                      "description": "Audit group name. By convention, the service name in lower-case has been used"
-                    },
-                    "endpointName": {
-                      "type": "string",
-                      "description": "Readable name of the endpoint. Should be unique for each 'groupName' to ease distinction"
-                    },
-                    "retentionTimeInDays": {
-                      "type": "integer",
-                      "description": "Time until the audit entry will be automatically removed. These values apply as a rule of thumb:\n* Read operations generated automatically by the frontend without user-required action, e.g. listing authorized locations (92 days)\n* Read operations requiring end-user action, e.g. looking at a specific user profile (184 days)\n* Updating operations not related to security or accountability, e.g. updating one's user profile (365 days)\n* Security related updating operations, e.g. assigning a role to someone (1826 days)",
-                      "default": 365
-                    },
-                    "regexUsedForAuditValuesInUrl": {
-                      "type": "string",
-                      "description": "Regular expression specifying what parts in the URL should be audited. All named group matches will be stored. .NET format is used, e.g. '(?< name>.+)'"
-                    },
-                    "auditBodyProperties": {
-                      "type": "string",
-                      "description": "Semi-colon separated list of properties in the request body that will be audited"
-                    }
-                  },
-                  "required": [
-                    "groupName",
-                    "endpointName"
-                  ]
+                  "description": "Allows directing the value to only a specific access strategy instance. E.g. if 'accessStrategies' is [\"AuthAllLocations\", \"AuthAllLocations(A)\", \"OR\"], and 'instance' is \"A\", only the second instance of AuthAllLocations can access the request value"
                 }
               },
-                "required": [
-                    "regexPattern",
-                    "urlRoute",
-                    "method",
-                    "accessStrategies",
-                    "baseUrl",
-                    "authorization",
-                    "auditConfiguration"
-                ]
+              "required": [
+                "key",
+                "fetchArgumentByMethod",
+                "fetchArgumentByMethodValue"
+              ]
             }
-        }
+          },
+          "baseUrl": {
+            "type": "string",
+            "description": "Base URL of the service that will called for the service"
+          },
+          "authorization": {
+            "type": "object",
+            "description": "Section describing how Access API will authorize the call to the service",
+            "properties": {
+              "authorizationMethod": {
+                "type": "string",
+                "description": "The method used to make an authorized call to the service",
+                "enum": [
+                  "AzureFunction",
+                  "ApiKeyHeader"
+                ]
+              },
+              "fromConfigurationKey": {
+                "type": "string",
+                "description": "Only applicable when 'authorizationMethod' is 'AzureFunction'. Key of configuration value where the function key resides"
+              }
+            },
+            "required": [
+              "authorizationMethod",
+              "fromConfigurationKey"
+            ]
+          },
+          "shouldCache": {
+            "type": "boolean",
+            "description": "Set to true if Access API should cache the response, otherwise set to false"
+          },
+          "shouldStream": {
+            "type": "boolean",
+            "description": "Set to true if Access API should stream the response, otherwise set to false"
+          },
+          "cacheHours": {
+            "type": "integer",
+            "description": "Number of hours the value should be cached if caching is enabled"
+          },
+          "auditConfiguration": {
+            "type": "object",
+            "description": "Section describing auditing options",
+            "properties": {
+              "auditingEnabled": {
+                "type": "boolean",
+                "description": "Set to true to enable auditing, otherwise set to false"
+              },
+              "groupName": {
+                "type": "string",
+                "description": "Audit group name. By convention, the service name in lower-case has been used"
+              },
+              "endpointName": {
+                "type": "string",
+                "description": "Readable name of the endpoint. Should be unique for each 'groupName' to ease distinction"
+              },
+              "retentionTimeInDays": {
+                "type": "integer",
+                "description": "Time until the audit entry will be automatically removed. These values apply as a rule of thumb:\n* Read operations generated automatically by the frontend without user-required action, e.g. listing authorized locations (92 days)\n* Read operations requiring end-user action, e.g. looking at a specific user profile (184 days)\n* Updating operations not related to security or accountability, e.g. updating one's user profile (365 days)\n* Security related updating operations, e.g. assigning a role to someone (1826 days)",
+                "default": 365
+              },
+              "regexUsedForAuditValuesInUrl": {
+                "type": "string",
+                "description": "Regular expression specifying what parts in the URL should be audited. All named group matches will be stored. .NET format is used, e.g. '(?< name>.+)'"
+              },
+              "auditBodyProperties": {
+                "type": "string",
+                "description": "Semi-colon separated list of properties in the request body that will be audited"
+              }
+            },
+            "required": [
+              "groupName",
+              "endpointName"
+            ]
+          }
+        },
+        "required": [
+          "regexPattern",
+          "urlRoute",
+          "method",
+          "accessStrategies",
+          "baseUrl",
+          "authorization",
+          "auditConfiguration"
+        ]
+      }
     }
+  }
 }
