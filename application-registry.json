@@ -46,6 +46,9 @@
     },
     "isHomeApp": {
       "type": "boolean"
+    },
+    "receiveContextFromSdpMessages": {
+      "type": "boolean"
     }
   },
   "appSwitcher": {
