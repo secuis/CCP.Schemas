@@ -65,6 +65,10 @@
       },
       "isHomeApp": {
         "type": "boolean"
+      },
+      "category": {
+        "type": "string",
+        "enum": ["Product", "Administration", "Other"]
       }
     },
     "required": ["enabled", "sortOrder"]
