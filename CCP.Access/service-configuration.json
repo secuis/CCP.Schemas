@@ -82,7 +82,8 @@
                     "NoUsersAssignedAtLocation",
                     "IsAuthorizedToDeleteUser",
                     "AllowWithDescendantAccess",
-                    "UserCanAssignRolesAtLocations"
+                    "UserCanAssignRolesAtLocations",
+                    "UserHasAuthRecords"
                   ]
                 },
                 {
