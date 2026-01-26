@@ -83,7 +83,8 @@
                     "IsAuthorizedToDeleteUser",
                     "AllowWithDescendantAccess",
                     "UserCanAssignRolesAtLocations",
-                    "UserHasAuthRecords"
+                    "UserHasAuthRecords",
+                    "InstallerHasVerbOnSite"
                   ]
                 },
                 {
