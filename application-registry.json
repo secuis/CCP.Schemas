@@ -91,9 +91,6 @@
   "activation": {
     "type": "object",
     "properties": {
-      "enabled": {
-        "type": "boolean"
-      },
       "roles": {
         "type": "array",
         "items": {
@@ -106,8 +103,7 @@
           "type": "string"
         }
       }
-    },
-    "required": ["enabled"]
+    }
   },
   "required": [
     "iconName",
