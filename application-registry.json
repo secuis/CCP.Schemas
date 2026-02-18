@@ -88,6 +88,23 @@
   "customConfiguration": {
     "type": "object"
   },
+  "activation": {
+    "type": "object",
+    "properties": {
+      "roles": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "attributes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
   "required": [
     "iconName",
     "isPlatform",
