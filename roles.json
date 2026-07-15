@@ -29,7 +29,7 @@
         "type": "string"
       }
     },
-    "allowedLocationLabelsWithCountry": {
+    "allowedLocationLabelsConfig": {
       "type": "object",
       "description": "Location labels required to assign this role. Use 'default' key for the global default labels, and ISO 3166-1 alpha-2 country codes for country-specific overrides.",
       "properties": {
