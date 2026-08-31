@@ -306,7 +306,6 @@
             "JsonBody",
             "UrlRegexp",
             "RequestHeader",
-            "AccessVerbFromReportDefinition",
             "QueryParam"
           ],
           "description": "Method to extract parameter value"
