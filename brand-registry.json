@@ -68,6 +68,18 @@
         }
       },
       "required": ["senderAddress"]
+    },
+    "assets": {
+      "type": "object",
+      "description": "Brand-specific asset locations. Environment-specific: each environment's registry carries its own hosts.",
+      "properties": {
+        "notificationsBaseUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Base URL of the brand's notification assets (email template images). Consumers append /{application}/{templateName}."
+        }
+      },
+      "required": ["notificationsBaseUrl"]
     }
   },
   "required": ["identifier", "name", "applicationName", "domain", "urls", "emails"]
