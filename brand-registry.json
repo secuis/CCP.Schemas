@@ -65,6 +65,11 @@
         "senderAddress": {
           "type": "string",
           "format": "email"
+        },
+        "notificationsAssetsBaseUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Environment-specific base URL of the brand's email template assets (images). Consumers append /{application}/{templateName}."
         }
       },
       "required": ["senderAddress"]
