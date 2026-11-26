@@ -33,6 +33,11 @@
       "description": "Global streaming settings",
       "$ref": "#/definitions/StreamingSettings"
     },
+    "forwarding": {
+      "type": [ "object", "null" ],
+      "description": "Global settings for forwarding requests to the service",
+      "$ref": "#/definitions/ForwardingSettings"
+    },
     "destination": {
       "type": "object",
       "description": "Default destination settings for the service",
@@ -143,6 +148,11 @@
           "type": [ "object", "null" ],
           "$ref": "#/definitions/StreamingSettings",
           "description": "Endpoint-specific streaming settings (overrides global settings)"
+        },
+        "forwarding": {
+          "type": [ "object", "null" ],
+          "$ref": "#/definitions/ForwardingSettings",
+          "description": "Endpoint-specific forwarding settings (overrides global settings)"
         },
         "audit": {
           "type": [ "object", "null" ],
@@ -327,6 +337,28 @@
           "type": "boolean",
           "default": false,
           "description": "Whether streaming is enabled"
+        }
+      }
+    },
+    "ForwardingSettings": {
+      "type": "object",
+      "properties": {
+        "timeout": {
+          "type": [ "object", "null" ],
+          "$ref": "#/definitions/TimeoutSettings",
+          "description": "How long Access waits for the service to respond. Defaults to 100 seconds"
+        }
+      }
+    },
+    "TimeoutSettings": {
+      "type": "object",
+      "required": [ "seconds" ],
+      "properties": {
+        "seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300,
+          "description": "Timeout in seconds"
         }
       }
     }
